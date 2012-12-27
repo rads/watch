@@ -7,7 +7,6 @@
   "dependencies": {},
   "development": {},
   "license": "MIT",
-  "main": "src/watch.js",
   "scripts": [
     "index.js"
   ]
