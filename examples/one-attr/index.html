@@ -14,7 +14,7 @@
 
     //defining a 'watcher' for an attribute
     watch(tim, "friends", function(prop, action, newValue, oldValue) {
-      console.log('Tim has now got %d %s.', newValue, prop) // e.g. Tim has now got 3 friends.
+      console.log(tim.name + ' has now got %d %s.', newValue, prop) // e.g. Tim has now got 3 friends.
     });
 
     //when changing the attribute its watcher will be invoked
