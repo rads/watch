@@ -1,0 +1,14 @@
+{
+  "name": "watch",
+  "repo": "timoxley/watch",
+  "description": "Watch the changes of any object or attribute.",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {},
+  "development": {},
+  "license": "MIT",
+  "main": "src/watch.js",
+  "scripts": [
+    "index.js"
+  ]
+}

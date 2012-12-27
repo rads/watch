@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+  <script src="../../build/build.js"></script>
+  <script>
+    var watch = require('watch').watch
+
+    // defining our object however we want
+    var tim = {
+      name: 'Tim',
+      friends: 0
+    };
+
+    //defining a 'watcher' for an attribute
+    watch(tim, "friends", function(prop, action, newValue, oldValue) {
+      console.log('Tim has now got %d %s.', newValue, prop) // e.g. Tim has now got 3 friends.
+    });
+
+    //when changing the attribute its watcher will be invoked
+    setInterval(function() {
+      tim.friends += Math.round((Math.random() * tim.friends + 1) - tim.friends)
+    }, 500)
+  </script>
+  </body>
+</html>

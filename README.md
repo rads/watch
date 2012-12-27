@@ -2,7 +2,26 @@
 
 ## About
 
-Watch.JS is a small library that brings a lot of possibilities. You may know that the "Observer" design pattern involves executing some function when an observed object changes. Other libraries exist that do this, but with Watch.JS you will not have to change the way you develop. Take a look at the examples to see how simple it is to add Watch.JS to your code.
+`watch` is a small library that brings a lot of possibilities. You may know the "Observer" design pattern involves executing some function when an observed object changes. Other libraries exist that do this, but with `watch` you will not have to change the way you develop. Take a look at the examples to see how simple it is to add `watch` to your code.
+
+## Installation
+
+		component install timoxley/watch
+
+## Usage
+
+```js
+var watch = require('watch').watch
+var unwatch = require('watch').unwatch
+
+var obj = {}
+watch(obj, function(){
+	alert("obj changed!");
+});
+
+obj.name = 'test'
+
+```
 
 ##Compatible with all serious browsers :P
 Works with: IE 9+, FF 4+, SF 5+, WebKit, CH 7+, OP 12+, BESEN, Node.JS , Rhino 1.7+
@@ -36,6 +55,7 @@ var callWatchers = WatchJS.callWatchers;
 ## Observe the changes of one object attribute
 
 ```javascript
+
 //defining our object however we like
 var ex1 = {
 	attr1: "initial value of attr1",
@@ -50,8 +70,6 @@ watch(ex1, "attr1", function(){
 //when changing the attribute its watcher will be invoked
 ex1.attr1 = "other value";
 ```
-
-[Try out](http://jsfiddle.net/NbJuh/17/)
 
 ## Observe the changes of more than one object attribute
 
@@ -69,10 +87,8 @@ watch(ex2, ["attr2", "attr3"], function(){
 });
 
 //when changing one of the attributes its watcher will be invoked
-ex2.attr2 = 50;​
+ex2.attr2 = 50;
 ```
-
-[Try out](http://jsfiddle.net/2zT4C/6/)
 
 ## Observe the changes of all attributes of the object
 
@@ -91,10 +107,8 @@ watch(ex3, function(){
 });
 
 //when changing one of the attributes of the object the watcher will be invoked
-ex3.attr3.push("new value");​
+ex3.attr3.push("new value");
 ```
-
-[Try out](http://jsfiddle.net/C83pW/3/)
 
 ## Remove a Watcher
 
@@ -109,7 +123,7 @@ var obj = {
         alert(obj.name + ", " + obj.phrase);
     }
 }
-    
+
 watch(obj, "name", obj.alert);
 watch(obj, "name", obj.alert2);
 
@@ -117,10 +131,8 @@ obj.name = "johnny";
 
 unwatch(obj, "name", obj.alert);
 
-obj.name = "phil";​
+obj.name = "phil";
 ```
-
-[Try out](http://jsfiddle.net/SZ2Ut/3/)
 
 ## More information about the change
 
@@ -137,10 +149,8 @@ watch(ex1, "attr1", function(prop, action, newvalue, oldvalue){
 });
 
 //when changing the attribute its watcher will be invoked
-ex1.attr1 = "other value";​
+ex1.attr1 = "other value";
 ```
-
-[Try out](http://jsfiddle.net/XnbXS/11/)
 
 ## Don't worry about the Infinite Loop
 
@@ -168,8 +178,6 @@ watch(ex1, "attr2", function(){
 ex1.attr1 = "other value to 1"; //attr1 will be changed but will not invoke the attr2`s watcher
 ```
 
-[Try out](http://jsfiddle.net/z2sJr/9/)
-
 ## How deep you wanna go? Provide a level of children
 
 ```javascript
@@ -183,7 +191,7 @@ var ex = {
         l2b: {
             //level 2 or less
             deeper: "so deep"
-        }           
+        }
     }
 };
 
@@ -221,7 +229,7 @@ watch(ex6, function(){
 });
 
 ex6.attr3 = null; //no watcher will be invoked
-ex6.attr3 = "value"; //no watcher will be invoked​​​
+ex6.attr3 = "value"; //no watcher will be invoked
 ```
 
 [Try out](http://jsfiddle.net/NFmUc/3/)
@@ -269,10 +277,8 @@ watch(ex7, function(){
     alert("some attribute of ex6 changes!")
 });
 
-callWatchers(ex7, "attr1"); //invoke the watcher​​
+callWatchers(ex7, "attr1"); //invoke the watcher
 ```
-
-[Try out](http://jsfiddle.net/98MmB/6/)
 
 ## Compatible with JQuery
 
@@ -280,7 +286,7 @@ callWatchers(ex7, "attr1"); //invoke the watcher​​
 $(function(){
 
     var obj = {cont: 0};
-    
+
     watch(obj, "cont", function(){
         alert("obj.cont = "+obj.cont);
     });
@@ -290,8 +296,6 @@ $(function(){
     });
 });
 ```
-[Try out](http://jsfiddle.net/fj2Yb/6/)
-
 ## Different ways to build Classes/Objects and use Watch.JS
 
 ```javascript
@@ -357,4 +361,12 @@ watch(orange, function(){
 
 orange.type = "other";
 ```
-[Try out](http://jsfiddle.net/t94Vv/30/)
+
+##Compatible with all browsers
+But still with some bugs with older browsers
+
+## License
+
+MIT
+
+
