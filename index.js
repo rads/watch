@@ -28,6 +28,7 @@
         window.callWatchers = window.WatchJS.callWatchers;
     }
 }(function () {
+    var equals = require('equals');
 
     var WatchJS = {
         noMore: false
@@ -266,7 +267,6 @@
             return val;
         };
 
-
         var setter = function (newval) {
             var oldval = val;
             val = newval;
@@ -278,7 +278,7 @@
             watchFunctions(obj, prop);
 
             if (!WatchJS.noMore){
-                if (JSON.stringify(oldval) !== JSON.stringify(newval)) {
+                if (!equals(oldval, newval)) {
                     callWatchers(obj, prop, "set", newval, oldval);
                     WatchJS.noMore = false;
                 }

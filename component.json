@@ -4,7 +4,9 @@
   "description": "Watch the changes of any object or attribute.",
   "version": "0.0.1",
   "keywords": [],
-  "dependencies": {},
+  "dependencies": {
+    "jkroso/equals": "*"
+  },
   "development": {},
   "license": "MIT",
   "scripts": [
