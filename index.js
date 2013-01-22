@@ -9,7 +9,6 @@
  * FORK:
  * https://github.com/melanke/Watch.JS
  */
-
 "use strict";
 (function (factory) {
     if (typeof exports === 'object') {
