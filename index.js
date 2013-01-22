@@ -176,6 +176,10 @@
         if(isFunction(obj[prop])) { //dont watch if it is a function
             return;
         }
+        var descriptor = Object.getOwnPropertyDescriptor(obj, prop)
+        if (descriptor.set || descriptor.get) { // don't watch if it already has a getter/setter
+          return;
+        }
 
         if(obj[prop] != null && (level === undefined || level > 0)){
             if(level !== undefined){
