@@ -213,6 +213,9 @@
         if (obj instanceof String || (!(obj instanceof Object) && !isArray(obj))) { //accepts only objects and array (not string)
             return;
         }
+        if (Object.getOwnPropertyDescriptor(obj, "watchers")) { // don't watch if it already has been 'watched
+          return;
+        }
 
         var props = [];
 
