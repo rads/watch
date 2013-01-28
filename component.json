@@ -2,7 +2,7 @@
   "name": "watch",
   "repo": "timoxley/watch",
   "description": "Watch the changes of any object or attribute.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "keywords": [],
   "dependencies": {
     "jkroso/equals": "*"
