@@ -177,7 +177,7 @@
             return;
         }
         var descriptor = Object.getOwnPropertyDescriptor(obj, prop)
-        if (descriptor.set || descriptor.get) { // don't watch if it already has a getter/setter
+        if (descriptor && descriptor.set || descriptor.get) { // don't watch if it already has a getter/setter
           return;
         }
 
@@ -213,7 +213,7 @@
         if (obj instanceof String || (!(obj instanceof Object) && !isArray(obj))) { //accepts only objects and array (not string)
             return;
         }
-        if (Object.getOwnPropertyDescriptor(obj, "watchers")) { // don't watch if it already has been 'watched
+        if (!isArray(obj) && Object.getOwnPropertyDescriptor(obj, "watchers")) { // don't watch if it already has been 'watched
           return;
         }
 
