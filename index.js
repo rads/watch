@@ -177,7 +177,7 @@
             return;
         }
         var descriptor = Object.getOwnPropertyDescriptor(obj, prop)
-        if (descriptor && descriptor.set || descriptor.get) { // don't watch if it already has a getter/setter
+        if (descriptor && (descriptor.set || descriptor.get)) { // don't watch if it already has a getter/setter
           return;
         }
 
