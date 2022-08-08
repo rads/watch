@@ -1,0 +1,5 @@
+{:paths ["src"]
+ :pods {org.babashka/fswatcher {:version "0.0.3"}}
+ :deps {local/deps {:local/root "."}}
+ :tasks {watch {:requires ([rads.watch])
+                :task (exec 'rads.watch/-main)}}}
