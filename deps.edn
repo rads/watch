@@ -5,4 +5,5 @@
         babashka/process {:mvn/version "0.1.7"}
         com.taoensso/timbre {:mvn/version "5.2.1"}}
  :aliases
- {:neil {:project {:name rads/watch}}}}
+ {:neil {:project {:name rads/watch
+                   :version {:major 0, :minor 0, :patch 1}}}}}
