@@ -8,7 +8,7 @@
 
 (defn print-help [_]
   (println (str/trim "
-Usage: bb -x rads.watch/watch")))
+Usage: bb -x rads.watch/-main")))
 
 (declare print-commands)
 
