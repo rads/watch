@@ -11,7 +11,9 @@
 
 (defn print-help [_]
   (println (str/trim "
-Usage: bb -x rads.watch/-main")))
+Usage: bb -x rads.watch/-main
+
+Run arbitrary commands when files change.")))
 
 (declare print-commands)
 
