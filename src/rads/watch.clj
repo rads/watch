@@ -1,6 +1,6 @@
 (ns rads.watch
   (:require [babashka.cli :as cli]
-            [babashka.process :refer [sh]]
+            [babashka.process :refer [sh] :as process]
             [clojure.core.async :refer [<!] :as async]
             [clojure.string :as str]
             [taoensso.timbre :as log]))
@@ -42,7 +42,9 @@ Examples:
   (if (:help opts)
     (print-help nil)
     (do
-      (let [build-fn #(sh (:utility opts) {:out :inherit :err :inherit})
+      (let [build-fn #(sh (concat (process/tokenize (first (:utility opts)))
+                                  (rest (:utility opts)))
+                          {:out :inherit :err :inherit})
             build-xf (filter build-event?)
             build-events (async/chan (async/sliding-buffer 1) build-xf)]
         (start-builder build-events build-fn)
