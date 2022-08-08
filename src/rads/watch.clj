@@ -1,10 +1,13 @@
 (ns rads.watch
   (:require [babashka.cli :as cli]
             [babashka.process :refer [sh]]
-            [pod.babashka.fswatcher :as fw]
             [clojure.core.async :refer [<!] :as async]
             [clojure.string :as str]
             [taoensso.timbre :as log]))
+
+(require '[babashka.pods :as pods])
+(pods/load-pod 'org.babashka/fswatcher "0.0.3")
+(require '[pod.babashka.fswatcher :as fw])
 
 (defn print-help [_]
   (println (str/trim "
