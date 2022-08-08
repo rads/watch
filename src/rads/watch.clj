@@ -31,7 +31,6 @@ Usage: bb -x rads.watch/-main")))
       (recur))))
 
 (defn watch [opts]
-  (prn opts)
   (if (:help opts)
     (print-help nil)
     (do
