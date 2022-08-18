@@ -6,4 +6,4 @@
         com.taoensso/timbre {:mvn/version "5.2.1"}}
  :aliases
  {:neil {:project {:name rads/watch
-                   :version "v0.0.2"}}}}
+                   :version "v0.0.3"}}}}
