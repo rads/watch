@@ -1,5 +1,8 @@
 {:paths ["src"]
- :deps {local/deps {:local/root "."}}
+ :deps {org.babashka/cli {:mvn/version "0.3.34"}
+        org.clojure/core.async {:mvn/version "1.5.648"}
+        babashka/process {:mvn/version "0.1.7"}
+        com.taoensso/timbre {:mvn/version "5.2.1"}}
  :tasks {watch {:requires ([rads.watch])
                 :task (exec 'rads.watch/-main)}}
  :bin {watch {:main-opts ["-m" "rads.watch"]}}}
