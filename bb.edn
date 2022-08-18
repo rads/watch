@@ -1,4 +1,5 @@
 {:paths ["src"]
  :deps {local/deps {:local/root "."}}
  :tasks {watch {:requires ([rads.watch])
-                :task (exec 'rads.watch/-main)}}}
+                :task (exec 'rads.watch/-main)}}
+ :bin {watch {:main-opts ["-m" "rads.watch"]}}}
