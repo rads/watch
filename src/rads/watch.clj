@@ -54,7 +54,8 @@ Examples:
 (def commands
   [{:cmds ["commands"] :fn #(print-commands %)}
    {:cmds ["help"] :fn print-help}
-   {:cmds [] :fn #(watch (assoc (:opts %) :utility (:args %)))}])
+   {:cmds [] :fn #(watch (assoc (:opts %) :utility (:args %)))
+    :aliases {:h :help}}])
 
 (defn print-commands [_]
   (println (str/join " " (keep #(first (:cmds %)) commands)))
