@@ -38,22 +38,32 @@ Examples:
       (fw/watch line #(async/put! build-events %) {:recursive true})
       (recur))))
 
+(defn print-version [_]
+  (println "watch 0.0.4"))
+
 (defn watch [opts]
-  (if (:help opts)
-    (print-help nil)
-    (do
-      (let [build-fn #(sh (concat (process/tokenize (first (:utility opts)))
-                                  (rest (:utility opts)))
-                          {:out :inherit :err :inherit})
-            build-xf (filter build-event?)
-            build-events (async/chan (async/sliding-buffer 1) build-xf)]
-        (start-builder build-events build-fn)
-        (start-watchers build-events))
-      (deref (promise)))))
+  (cond
+    (:help opts) (print-help nil)
+    (:version opts) (print-version nil)
+    :else (do
+            (let [build-fn #(sh (concat (process/tokenize (first (:utility opts)))
+                                        (rest (:utility opts)))
+                                {:out :inherit :err :inherit})
+                  build-xf (filter build-event?)
+                  build-events (async/chan (async/sliding-buffer 1) build-xf)]
+              (start-builder build-events build-fn)
+              (start-watchers build-events))
+            (deref (promise)))))
+
+(defn run-help [{:keys [opts] :as parsed-args}]
+  (if (:version opts)
+    (print-version parsed-args)
+    (print-help parsed-args)))
 
 (def commands
   [{:cmds ["commands"] :fn #(print-commands %)}
-   {:cmds ["help"] :fn print-help}
+   {:cmds ["help"] :fn run-help}
+   {:cmds ["version" :fn print-version]}
    {:cmds [] :fn #(watch (assoc (:opts %) :utility (:args %)))
     :aliases {:h :help}}])
 
